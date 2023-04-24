@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.tailwindcss.com/3.0.3/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v3.7.0/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.7.0/dist/cdn.min.js" defer></script>
     <title>Training & Speakers SPA</title>
 </head>
 <body class="bg-gray-100">
@@ -12,19 +12,27 @@
     <header class="bg-blue-600 text-white py-4">
         <h1 class="text-center text-3xl font-bold">Training & Speakers SPA</h1>
         <nav class="text-center mt-4">
-            <button @click="page = 'trainings'" class="px-4 py-2">Trainings</button>
-            <button @click="page = 'speakers'" class="px-4 py-2">Speakers</button>
+            <button @click="page = 'trainings'" :class="{'bg-blue-400': page === 'trainings'}" class="px-4 py-2 rounded text-white">Trainings</button>
+            <button @click="page = 'speakers'" :class="{'bg-blue-400': page === 'speakers'}" class="px-4 py-2 rounded text-white">Speakers</button>
         </nav>
     </header>
     <main class="container mx-auto mt-12 flex-grow">
-        <div x-show="page === 'trainings'">
-            test 1
-        </div>
-        <div x-show="page === 'speakers'">
-            test 2
-        </div>
+        <template x-if="page === 'trainings'">
+            <div>
+                <!-- Trainings page content -->
+                <h2 class="text-2xl font-bold">Training Schedule & Materials</h2>
+                <!-- ... -->
+            </div>
+        </template>
+        <template x-if="page === 'speakers'">
+            <div>
+                <!-- Speakers page content -->
+                <h2 class="text-2xl font-bold">Speakers & Training Information</h2>
+                <!-- ... -->
+            </div>
+        </template>
     </main>
-    <footer class="bg-blue-600 text-white text-center py-4">
+    <footer class="bg-blue-600 text-white text-center py-4 mt-auto">
         <p>Copyright © 2023 - example.com</p>
     </footer>
 </div>
